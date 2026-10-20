@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios Prácticos: Funciones en JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 0 15px;
+      background-color: #f4f7f6;
+    }
+    h1 { text-align: center; color: #2c3e50; }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 8px;
+      margin: 5px 5px 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 8px 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2980b9; }
+    .resultado {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Funciones en JavaScript e HTML Interconectados</h1>
+
+  <!-- Ejercicio 1: Declaración de Función -->
+  <div class="card">
+    <h2>1. Cálculo de Área (Declaración de Función)</h2>
+    <input type="number" id="base" placeholder="Base (cm)">
+    <input type="number" id="altura" placeholder="Altura (cm)">
+    <button id="btnCalcularArea">Calcular Área</button>
+    <div id="resArea" class="resultado"></div>
+  </div>
+
+  <!-- Ejercicio 2: Funciones de Flecha (Arrow Functions) -->
+  <div class="card">
+    <h2>2. Filtro de Números Pares (Arrow Function)</h2>
+    <p>Lista base: <code>[10, 15, 22, 33, 40, 55, 60]</code></p>
+    <button id="btnFiltrarPares">Filtrar Pares</button>
+    <div id="resPares" class="resultado"></div>
+  </div>
+
+  <!-- Ejercicio 3: Parámetros Rest y por Defecto -->
+  <div class="card">
+    <h2>3. Carrito de Compras (Parámetros Rest)</h2>
+    <p>Ingresa precios separados por comas:</p>
+    <input type="text" id="preciosInput" placeholder="100, 50, 25">
+    <button id="btnCalcularTotal">Calcular Total (+21% IVA)</button>
+    <div id="resTotal" class="resultado"></div>
+  </div>
+
+  <!-- Ejercicio 4: Closures (Clausuras) -->
+  <div class="card">
+    <h2>4. Contador Encapsulado (Closure)</h2>
+    <button id="btnSumar">+1 Incrementar</button>
+    <button id="btnRestar">-1 Decrementar</button>
+    <div id="resContador" class="resultado">Valor actual: 0</div>
+  </div>
+
+  <!-- ENLACE AL ARCHIVO JAVASCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
