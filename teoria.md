@@ -1,4 +1,6 @@
-# Funciones en JavaScript## 1. ¿Qué son las funciones?Las funciones son bloques de código que sirven para realizar una tarea. Se pueden utilizar varias veces sin tener que repetir las mismas instrucciones.### Ejemplo
+# Funciones en JavaScript## 
+1. ¿Qué son las funciones?Las funciones son bloques de código que sirven para realizar una tarea. Se pueden utilizar varias veces sin tener que repetir las mismas 
+### Ejemplo
 javascript
 function saludar() {
     console.log("Hola");
