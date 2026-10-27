@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación Canvas</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #0b1020;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        h1 {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ Universo de partículas ✨</h1>
+
+    <canvas id="lienzo"></canvas>
+
+    <script>
+        const canvas = document.getElementById("lienzo");
+        const ctx = canvas.getContext("2d");
+
+        // Ajustar el lienzo al tamaño de la pantalla
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Crear las partículas
+        const particulas = [];
+
+        for (let i = 0; i < 100; i++) {
+            particulas.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 3,
+                vy: (Math.random() - 0.5) * 3,
+                radio: Math.random() * 3 + 1
+            });
+        }
+
+        // Dibujar y mover las partículas
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particulas.forEach(p => {
+                // Mover la partícula
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Rebotar en los bordes
+                if (p.x < 0 || p.x > canvas.width) {
+                    p.vx *= -1;
+                }
+
+                if (p.y < 0 || p.y > canvas.height) {
+                    p.vy *= -1;
+                }
+
+                // Dibujar la partícula
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radio, 0, Math.PI * 2);
+                ctx.fillStyle = "#38bdf8";
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = "#38bdf8";
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+
+            // Dibujar líneas entre partículas cercanas
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const a = particulas[i];
+                    const b = particulas[j];
+
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const distancia = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distancia < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.strokeStyle =
+                            `rgba(56, 189, 248, ${1 - distancia / 120})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Repetir la animación
+            requestAnimationFrame(animar);
+        }
+
+        // Adaptar el lienzo si cambia el tamaño de la ventana
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        animar();
+    </script>
+
+</body>
+</html>
